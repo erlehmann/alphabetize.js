@@ -40,19 +40,19 @@ for(var i = 0, l = xPathResult.snapshotLength; i < l; i++) {
 
 /* now images will be “sorted” */
 
-function luma(pixel) {
-    return ((0.299 * pixel[0]) + (0.587 * pixel[1]) + (0.114 * pixel[2])) * (pixel[3] / 256);
+function luminance(pixel) {
+    return ((0.2126 * pixel[0]) + (0.7152 * pixel[1]) + (0.0722 * pixel[2])) * (pixel[3] / 256);
 }
 
 function isort(x, y) {
-    var a = luma(x);
-    var b = luma(y);
+    var a = luminance(x);
+    var b = luminance(y);
     if (a > b) { return 1; }
     if (a < b) { return -1; }
     return 0;
 }
 
-function lumanize(image) {
+function luminize(image) {
     var canvas = document.createElement("canvas");
     var canvasContext = canvas.getContext("2d");
 
@@ -100,11 +100,11 @@ function lumanize(image) {
 }
 
 /* needed so the script does not become unresponsive */
-function lumanizeDelayLoop() {
+function luminizeDelayLoop() {
   if(i < images.length){
     var image = images[i];
-    image.src = lumanize(image);
-    window.setTimeout("lumanizeDelayLoop()", 100);
+    image.src = luminize(image);
+    window.setTimeout(luminizeDelayLoop(), 100);
     i++;
   }
 }
