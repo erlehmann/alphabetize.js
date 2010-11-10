@@ -111,4 +111,4 @@ function luminizeDelayLoop() {
 
 var images = document.getElementsByTagName("img");
 var i = 0;
-lumanizeDelayLoop();
+luminizeDelayLoop();
