@@ -99,8 +99,16 @@ function lumanize(image) {
     return canvas.toDataURL();
 }
 
-var images = document.getElementsByTagName("img");
-for (i = 0; i < images.length; i++) {
+/* needed so the script does not become unresponsive */
+function lumanizeDelayLoop() {
+  if(i < images.length){
     var image = images[i];
     image.src = lumanize(image);
+    window.setTimeout("lumanizeDelayLoop()", 100);
+    i++;
+  }
 }
+
+var images = document.getElementsByTagName("img");
+var i = 0;
+lumanizeDelayLoop();
