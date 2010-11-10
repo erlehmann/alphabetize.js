@@ -45,8 +45,8 @@ function luma(pixel) {
 }
 
 function isort(x, y) {
-    a = luma(x);
-    b = luma(y);
+    var a = luma(x);
+    var b = luma(y);
     if (a > b) { return 1; }
     if (a < b) { return -1; }
     return 0;
