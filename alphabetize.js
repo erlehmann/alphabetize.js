@@ -7,7 +7,7 @@ function asort(x, y) {
     if (x.charCodeAt(0) <= 64) {
         if (y.charCodeAt(0) <= 64) {
             if (x > y) { return 1; }
-            if (x < y) { return -1; }   
+            if (x < y) { return -1; }
         }
         if (65 <= y.charCodeAt(0) <= 122) { return 1; }
         if (y.charCodeAt(0) >= 123) { return -1; }
