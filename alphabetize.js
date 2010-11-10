@@ -41,7 +41,7 @@ for(var i = 0, l = xPathResult.snapshotLength; i < l; i++) {
 /* now images will be “sorted” */
 
 function luma(pixel) {
-    return ((0.299 * pixel[0]) + (0.114 * pixel[1]) + (0.587 * pixel[2])) * (pixel[3] / 256)
+    return ((0.299 * pixel[0]) + (0.587 * pixel[1]) + (0.114 * pixel[2])) * (pixel[3] / 256);
 }
 
 function isort(x, y) {
