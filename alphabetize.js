@@ -103,9 +103,12 @@ function luminize(image) {
 function luminizeDelayLoop() {
   if(i < images.length){
     var image = images[i];
-    image.src = luminize(image);
-    window.setTimeout(luminizeDelayLoop(), 100);
+    /* don't work on already converted images */
+    if (image.src.slice(0, 5) != 'data:') {
+        image.src = luminize(image);
+    };
     i++;
+    window.setTimeout('luminizeDelayLoop()', 100);
   }
 }
 
