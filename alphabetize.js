@@ -24,7 +24,7 @@ function asort(x, y) {
 }
 
 var xPathResult = document.evaluate(
-    './/text()[normalize-space(.) != '']',
+    './/text()[normalize-space(.) != ""]',
     document.body,
     null,
     XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
