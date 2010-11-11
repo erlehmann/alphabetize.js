@@ -41,7 +41,7 @@ for(var i = 0, l = xPathResult.snapshotLength; i < l; i++) {
 /* now images will be “sorted” */
 
 function luminance(pixel) {
-    return ((0.2126 * pixel[0]) + (0.7152 * pixel[1]) + (0.0722 * pixel[2])) * (pixel[3] / 255);
+    return ((0.2126 * pixel[0]) + (0.7152 * pixel[1]) + (0.0722 * pixel[2])) * (1 / pixel[3]);
 }
 
 function isort(x, y) {
