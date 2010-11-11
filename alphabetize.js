@@ -62,7 +62,47 @@ function luminize(image) {
     canvas.height = height;
     canvasContext.drawImage(image, 0, 0);
 
-    var imageData = canvasContext.getImageData(0, 0, width, height);
+    try {
+        var imageData = canvasContext.getImageData(0, 0, width, height);
+    } catch(e) {
+        /* old canvas did not get the image due to cross domain restrictions,
+         * create new canvas with random image data */
+        var canvas = document.createElement("canvas");
+        var canvasContext = canvas.getContext("2d");
+        canvas.width = width;
+        canvas.height = height;
+
+        var imageData = canvasContext.createImageData(width, height);
+
+        r = parseInt(Math.random() * 256);
+        g = parseInt(Math.random() * 256);
+        b = parseInt(Math.random() * 256);
+        a = 256;
+
+        for (y = 0; y < height; y++) {
+            outpos = y * width * 4;
+            for (x = 0; x < width; x++) {
+                if (Math.random() < 0.00001) {
+                    r = parseInt(Math.random() * 256);
+                    g = parseInt(Math.random() * 256);
+                }
+                if (Math.random() < 0.00001) {
+                    g = parseInt(Math.random() * 256);
+                    b = parseInt(Math.random() * 256);
+                }
+                if (Math.random() < 0.00001) {
+                    b = parseInt(Math.random() * 256);
+                    r = parseInt(Math.random() * 256);
+                }
+                if (Math.random() < 0.001) { a = parseInt(Math.random() * 256); }
+                /* rgba */
+                imageData.data[outpos++] = r - 4 + parseInt(Math.random() * 4);
+                imageData.data[outpos++] = g - 4 + parseInt(Math.random() * 4);
+                imageData.data[outpos++] = b - 4 + parseInt(Math.random() * 4);
+                imageData.data[outpos++] = a - 4 + parseInt(Math.random() * 4);
+            }
+        };
+    }
     var imageArray = new Array(0);
 
     /* copy imageData to array */
