@@ -1,5 +1,5 @@
 function alphabetize(text) {
-    return text.replace(/ /g,'').split("").sort(asort).join("\u200b");
+    return text.replace(/ /g,'').split('').sort(asort).join('\u200b');
     /* joining with a zero width space makes line breaks possible */
 }
 
@@ -24,7 +24,7 @@ function asort(x, y) {
 }
 
 var xPathResult = document.evaluate(
-    './/text()[normalize-space(.) != ""]',
+    './/text()[normalize-space(.) != '']',
     document.body,
     null,
     XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
@@ -53,8 +53,8 @@ function isort(x, y) {
 }
 
 function luminize(image) {
-    var canvas = document.createElement("canvas");
-    var canvasContext = canvas.getContext("2d");
+    var canvas = document.createElement('canvas');
+    var canvasContext = canvas.getContext('2d');
 
     var width = image.width;
     var height = image.height;
@@ -67,8 +67,8 @@ function luminize(image) {
     } catch(e) {
         /* old canvas did not get the image due to cross domain restrictions,
          * create new canvas with random image data */
-        var canvas = document.createElement("canvas");
-        var canvasContext = canvas.getContext("2d");
+        var canvas = document.createElement('canvas');
+        var canvasContext = canvas.getContext('2d');
         canvas.width = width;
         canvas.height = height;
 
@@ -152,6 +152,6 @@ function luminizeDelayLoop() {
   }
 }
 
-var images = document.getElementsByTagName("img");
+var images = document.getElementsByTagName('img');
 var i = 0;
 luminizeDelayLoop();
